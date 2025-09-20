@@ -1,0 +1,8 @@
+* text eol=lf
+
+*.proto linguist-detectable=true
+
+.czrc          export-ignore
+.editorconfig  export-ignore
+.gitattributes export-ignore
+*.md           export-ignore
