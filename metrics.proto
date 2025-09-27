@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package metrics;
 
+import "google/protobuf/empty.proto";
+
 message PacketMetric {
   uint32 protocol = 1;
   uint64 count = 2;
@@ -11,4 +13,12 @@ message PacketMetric {
   uint32 dst_port = 6;
   uint64 timestamp = 7;
   uint32 payload_size = 8;
+}
+
+message MetricsBatch {
+  repeated PacketMetric metrics = 1;
+}
+
+service MetricsService {
+  rpc SendMetrics(MetricsBatch) returns (google.protobuf.Empty);
 }
