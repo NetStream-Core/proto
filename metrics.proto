@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package metrics;
 
+option go_package = "github.com/NetStream-Core/proto";
+
 import "google/protobuf/empty.proto";
 
 message PacketMetric {
@@ -19,6 +21,10 @@ message MetricsBatch {
   repeated PacketMetric metrics = 1;
 }
 
+message CompressedMetricsBatch {
+  bytes compressed_data = 1;
+}
+
 service MetricsService {
-  rpc SendMetrics(MetricsBatch) returns (google.protobuf.Empty);
+  rpc SendMetrics(CompressedMetricsBatch) returns (google.protobuf.Empty);
 }
